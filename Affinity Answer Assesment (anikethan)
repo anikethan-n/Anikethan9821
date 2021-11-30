@@ -1,0 +1,53 @@
+import csv
+with open('tweetssamples.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    count = 0
+    tweets = []
+    for row in reader:
+        count = count+1
+        tweets.append(row[0])
+
+with open('badwords.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    count = 0
+    badwords = []
+    for row in reader:
+        count = count+1
+        badwords.append(row[0])
+        
+red_tweets = ['RED ZONE Tweets']
+green_tweets = ['GREEN ZONE Tweets']
+yellow_tweets = ['YELLOW ZONE  Tweets']
+
+for tweets in tweets:
+    split_tweets = tweets.split()
+    profinity_check = set(badwords)
+    degree_of_profanity = [x for x in split_tweets if x in profinity_check]
+    
+    if len(degree_of_profanity) == 0:
+        green_tweets.append(tweets)
+    elif len(degree_of_profanity) == 1:
+        yellow_tweets.append(tweets)
+    elif len(degree_of_profanity) >= 2:
+        red_tweets.append(tweets)
+    
+print('gree zone')
+print (green_tweets)
+print('yellow zone')
+print (yellow_tweets)
+print('red zone')
+print (red_tweets)
+
+
+import xlsxwriter
+
+workbook = xlsxwriter.Workbook('classsified tweets.xlsx')
+worksheet = workbook.add_worksheet()
+
+title_list = [['green'], ['yellow'], ['red']]
+list = [green_tweets, yellow_tweets, red_tweets]
+row_num = 0
+for col_num, data in enumerate(list):
+    worksheet.write_column(row_num, col_num, data)
+
+workbook.close()
