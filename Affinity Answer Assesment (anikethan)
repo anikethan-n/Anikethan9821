@@ -52,7 +52,7 @@ for tweets in tweets:
         red_tweets.append(tweets)
     
 
-# Now I exported classified data into Excel with three Columns (Green Zone tweets, Yellow Zone tweets, Red Zone tweets)
+# Now I exported classified data into Excel with three Columns (Green Zone tweets, Yellow Zone tweets, Red Zone tweets) in classsified tweets.xlsx
 
 import xlsxwriter
 workbook = xlsxwriter.Workbook('classsified tweets.xlsx')
