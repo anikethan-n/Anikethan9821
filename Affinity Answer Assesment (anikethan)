@@ -1,3 +1,15 @@
+# Assumption made :
+1) I created an excel file with Twenty tweets with racial slurs (all are dummy slur and I am using Lorem ipsumtweets)
+2) I created and excel file which contain racial slur.
+3) For Degree of Profanity I assumed like: 
+    a] if tweet contains NO slurs then it will be considered as regular tweet and it comes under 'Green Zone Tweets',  
+    b] if tweet contains ONE slurs then it will be considered as controversial tweet and it comes under 'Yellow Zone Tweets',  
+    c] if tweet contains TWO or MORE slurs then it will be considered as racial tweet and it comes under 'Red  Zone Tweets', 
+
+
+
+# Now I imported data from excel to python lists
+
 import csv
 with open('tweetssamples.csv') as csvfile:
     reader = csv.reader(csvfile)
@@ -15,15 +27,23 @@ with open('badwords.csv') as csvfile:
         count = count+1
         badwords.append(row[0])
         
+
+# I created lists for the green - yellow - red tweets classification
+
 red_tweets = ['RED ZONE Tweets']
 green_tweets = ['GREEN ZONE Tweets']
 yellow_tweets = ['YELLOW ZONE  Tweets']
+
+# Now I looped through all the items in tweets list and split each of them and checked is racial slur present or not. If present, checked how many time it is present
 
 for tweets in tweets:
     split_tweets = tweets.split()
     profinity_check = set(badwords)
     degree_of_profanity = [x for x in split_tweets if x in profinity_check]
-    
+
+
+# if not present it will go to Green list, one time present it will go to Yellow list, and if two or more time present it will go to Red list
+
     if len(degree_of_profanity) == 0:
         green_tweets.append(tweets)
     elif len(degree_of_profanity) == 1:
@@ -31,20 +51,12 @@ for tweets in tweets:
     elif len(degree_of_profanity) >= 2:
         red_tweets.append(tweets)
     
-print('gree zone')
-print (green_tweets)
-print('yellow zone')
-print (yellow_tweets)
-print('red zone')
-print (red_tweets)
 
+# Now I exported classified data into Excel with three Columns (Green Zone tweets, Yellow Zone tweets, Red Zone tweets)
 
 import xlsxwriter
-
 workbook = xlsxwriter.Workbook('classsified tweets.xlsx')
 worksheet = workbook.add_worksheet()
-
-title_list = [['green'], ['yellow'], ['red']]
 list = [green_tweets, yellow_tweets, red_tweets]
 row_num = 0
 for col_num, data in enumerate(list):
