@@ -1,10 +1,10 @@
 # Assumption made :
-1) I created an excel file with Twenty tweets with racial slurs (all are dummy slur and I am using Lorem ipsumtweets)
-2) I created and excel file which contain racial slur.
-3) For Degree of Profanity I assumed like: 
-    a] if tweet contains NO slurs then it will be considered as regular tweet and it comes under 'Green Zone Tweets',  
-    b] if tweet contains ONE slurs then it will be considered as controversial tweet and it comes under 'Yellow Zone Tweets',  
-    c] if tweet contains TWO or MORE slurs then it will be considered as racial tweet and it comes under 'Red  Zone Tweets', 
+# 1) I created an excel file with Twenty tweets with racial slurs (all are dummy slur and I am using Lorem ipsumtweets)
+# 2) I created and excel file which contain racial slur.
+# 3) For Degree of Profanity I assumed like: 
+#     a] if tweet contains NO slurs then it will be considered as regular tweet and it comes under 'Green Zone Tweets',  
+#     b] if tweet contains ONE slurs then it will be considered as controversial tweet and it comes under 'Yellow Zone Tweets',  
+#     c] if tweet contains TWO or MORE slurs then it will be considered as racial tweet and it comes under 'Red  Zone Tweets', 
 
 
 
