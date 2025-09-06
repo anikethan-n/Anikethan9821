@@ -1,5 +1,4 @@
 - 👋 Hi, I’m @Anikethan9821
-- 🌱 I’m currently learning life...
 
 <!---
 Anikethan9821/Anikethan9821 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
